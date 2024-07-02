@@ -1,6 +1,0 @@
-@Wallet.Registration.Api_HostAddress = http://localhost:5073
-
-GET {{Wallet.Registration.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
