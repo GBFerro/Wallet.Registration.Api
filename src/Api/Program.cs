@@ -1,6 +1,7 @@
 using MediatR;
 using Wallet.Registration.Api.Controller.Mutation;
 using Wallet.Registration.Api.Controller.Query;
+using Wallet.Registration.CrossCutting.Configuration;
 using Wallet.Registration.Domain.Command.v1.SignUp;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,8 @@ builder.Services.AddGraphQLServer()
         .AddMutationType<RegistrationMutation>();
 
 builder.Services.AddGraphQL();
+builder.Services.AddSingleton<AppSettings>(builder.Configuration.Get<AppSettings>());
+
 
 var app = builder.Build();
 

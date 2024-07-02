@@ -1,8 +1,6 @@
-﻿using FluentValidation;
-
-namespace Wallet.Registration.Domain.Command.v1.SignUp
+﻿namespace Wallet.Registration.Domain.Command.v1.SignUp
 {
-    public class SignUpCommandValidator : AbstractValidator<SignUpCommand>
+    public class SignUpCommandValidator //: AbstractValidator<SignUpCommand>
     {
     }
 }

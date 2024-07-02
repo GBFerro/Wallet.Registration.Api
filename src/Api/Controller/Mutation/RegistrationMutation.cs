@@ -11,10 +11,10 @@ public class RegistrationMutation
         typeof(SignUpCommandResponse),
         (int)HttpStatusCode.Created
     )]
-    public async Task<SignUpCommandResponse> Authenticate(
-    [Service] IMediator mediator,
-    SignUpCommand command,
-    CancellationToken cancellationToken
-) =>
-    await mediator.Send(command, cancellationToken);
+    public async Task<SignUpCommandResponse> Register(
+        [Service] IMediator mediator,
+        SignUpCommand command,
+        CancellationToken cancellationToken
+    ) =>
+        await mediator.Send(command, cancellationToken);
 }

@@ -2,5 +2,6 @@
 {
     public class SignUpCommandResponse
     {
+        public string User { get; set; }
     }
 }
