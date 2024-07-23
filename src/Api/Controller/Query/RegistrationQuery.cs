@@ -5,7 +5,7 @@ using Wallet.Registration.Domain.Command.v1.SignUp;
 
 namespace Wallet.Registration.Api.Controller.Query;
 
-public class RegisrationQuery
+public class RegistrationQuery
 {
     [ProducesResponseType(
         (int)HttpStatusCode.OK
