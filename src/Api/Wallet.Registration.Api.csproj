@@ -10,12 +10,14 @@
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.5" />
+    <PackageReference Include="SimpleInjector" Version="5.4.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Wallet.Registration.Domain.csproj" />
     <ProjectReference Include="..\Infrastructure.Data.Query\Wallet.Registration.Infrastructure.Data.Query.csproj" />
+    <ProjectReference Include="..\Infrastructure.Data\Wallet.Registration.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>

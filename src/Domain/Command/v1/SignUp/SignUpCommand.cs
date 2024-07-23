@@ -6,5 +6,6 @@ namespace Wallet.Registration.Domain.Command.v1.SignUp
     {
         public string User { get; set; }
         public string Email { get; set; }
+        public string Phone { get; set; }
     }
 }
