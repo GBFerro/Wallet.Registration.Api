@@ -1,7 +1,9 @@
 ﻿namespace Wallet.Registration.Domain.Command.v1.SignUp
 {
-    public class SignUpCommandResponse
+    public record SignUpCommandResponse
     {
-        public string User { get; set; }
+        public string Username { get; set; }
+        public string GovId { get; set; }
+        public string Email { get; set; }
     }
 }

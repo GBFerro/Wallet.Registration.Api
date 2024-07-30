@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
 using System.Net;
 using Wallet.Registration.CrossCutting.Configuration;
-using Wallet.Registration.CrossCutting.Configuration.Logs;
+using Wallet.Registration.CrossCutting.Configuration.Information;
 using Wallet.Registration.CrossCutting.Exceptions;
 
 namespace Wallet.Registration.Infrastructure.Data.GenericConnection
@@ -29,13 +29,14 @@ namespace Wallet.Registration.Infrastructure.Data.GenericConnection
             }
             catch (Exception)
             {
-                MongoDbLog mongoDbLog = new MongoDbLog() { Method = "CreateConnection", Collection = collection, Error = "ConnectionFailed" };
+                MongoDbInformation mongoDbInformation = new MongoDbInformation() { Method = "CreateConnection", Collection = collection, Error = "ConnectionFailed" };
 
-                throw new MongoDbException<MongoDbLog>(mongoDbLog, HttpStatusCode.ServiceUnavailable);
+                throw new MongoDbException<MongoDbInformation>(mongoDbInformation, HttpStatusCode.ServiceUnavailable);
             }
         }
 
         public FilterDefinitionBuilder<T> CreateFilterBuilder<T>() =>
             Builders<T>.Filter;
+
     }
 }

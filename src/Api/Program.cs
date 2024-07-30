@@ -1,3 +1,4 @@
+using FluentValidation;
 using MediatR;
 using Wallet.Registration.Api.Controller.Mutation;
 using Wallet.Registration.Api.Controller.Query;
@@ -26,13 +27,23 @@ builder.Services.AddGraphQLServer()
 builder.Services.AddGraphQL();
 var appSettings = builder.Configuration.Get<AppSettings>();
 builder.Services.AddSingleton(appSettings);
-builder.Services.AddSingleton<IMongoDbRepository>(provider =>
-    new MongoDbRepository(
+builder.Services.AddValidatorsFromAssemblyContaining<SignUpCommandValidator>();
+builder.Services.AddSingleton<IUserRegistryRepository>(provider =>
+    new UserRegistryRepository(
         "SignIn",
+        "WalletRegistration",
         "UserRegistry",
-        "User",
         provider.GetRequiredService<AppSettings>()
     ));
+builder.Services.AddSingleton<IUserSaltRepository>(provider =>
+    new UserSaltRepository(
+        "SignIn",
+        "WalletRegistration",
+        "UserSalt",
+        provider.GetRequiredService<AppSettings>()
+    ));
+
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 var app = builder.Build();
 

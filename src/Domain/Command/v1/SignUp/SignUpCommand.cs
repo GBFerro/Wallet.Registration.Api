@@ -1,11 +1,12 @@
 ﻿using MediatR;
+using Wallet.Registration.Domain.Command.v1.SignUp.Models.Request;
 
 namespace Wallet.Registration.Domain.Command.v1.SignUp
 {
-    public class SignUpCommand : IRequest<SignUpCommandResponse>
+    public record SignUpCommand : IRequest<SignUpCommandResponse>
     {
-        public string User { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
+        public User User { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

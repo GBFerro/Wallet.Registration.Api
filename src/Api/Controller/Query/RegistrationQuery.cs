@@ -1,19 +1,20 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using Wallet.Registration.Domain.Command.v1.SignUp;
+using Wallet.Registration.Infrastructure.Data.Query.Query.v1.UserSalt;
 
 namespace Wallet.Registration.Api.Controller.Query;
 
 public class RegistrationQuery
 {
     [ProducesResponseType(
+        typeof(UserSaltQueryResponse),
         (int)HttpStatusCode.OK
     )]
-    public async Task<int> RetrieveUser(
+    public async Task<UserSaltQueryResponse> RetrieveUserSalt(
         [Service] IMediator mediator,
-        SignUpCommand command,
+        UserSaltQuery query,
         CancellationToken cancellationToken
-    ) => (int)HttpStatusCode.OK;
-    // await mediator.Send(command, cancellationToken);
+    ) =>
+        await mediator.Send(query, cancellationToken);
 }
